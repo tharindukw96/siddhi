@@ -663,6 +663,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../api/4.1.0/" title="4.1.0" class="md-nav__link">
+      4.1.0
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../api/4.0.9/" title="4.0.9" class="md-nav__link">
       4.0.9
     </a>
@@ -2148,12 +2160,37 @@ The number of events matched per condition can be limited via condition postfixe
 </pre></div>
 
 
-<p>Postfix|Description|Example
----------|---------|---------|
-<code>&lt;n1:n2&gt;</code>|This matches <code>n1</code> to <code>n2</code> events (including <code>n1</code> and not more than <code>n2</code>).|<code>1:4</code> matches 1 to 4 events.
-<code>&lt;n:&gt;</code>|This matches <code>n</code> or more events (including <code>n</code>).|<code>&lt;2:&gt;</code> matches 2 or more events.
-<code>&lt;:n&gt;</code>|This matches up to <code>n</code> events (excluding <code>n</code>).|<code>&lt;:5&gt;</code> matches up to 5 events.
-<code>&lt;n&gt;</code>|This matches exactly <code>n</code> events.|<code>&lt;5&gt;</code> matches exactly 5 events.</p>
+<table>
+<thead>
+<tr>
+<th>Postfix</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;n1:n2&gt;</code></td>
+<td>This matches <code>n1</code> to <code>n2</code> events (including <code>n1</code> and not more than <code>n2</code>).</td>
+<td><code>1:4</code> matches 1 to 4 events.</td>
+</tr>
+<tr>
+<td><code>&lt;n:&gt;</code></td>
+<td>This matches <code>n</code> or more events (including <code>n</code>).</td>
+<td><code>&lt;2:&gt;</code> matches 2 or more events.</td>
+</tr>
+<tr>
+<td><code>&lt;:n&gt;</code></td>
+<td>This matches up to <code>n</code> events (excluding <code>n</code>).</td>
+<td><code>&lt;:5&gt;</code> matches up to 5 events.</td>
+</tr>
+<tr>
+<td><code>&lt;n&gt;</code></td>
+<td>This matches exactly <code>n</code> events.</td>
+<td><code>&lt;5&gt;</code> matches exactly 5 events.</td>
+</tr>
+</tbody>
+</table>
 <p>Specific occurrences of the event in a collection can be retrieved by using an event index with its reference.
 Square brackets can be used to indicate the event index where <code>1</code> can be used as the index of the first event and <code>last</code> can be used as the index
  for the <code>last</code> available event in the event collection. If you provide an index greater then the last event index,
@@ -2786,16 +2823,18 @@ When constructing the <code>condition</code>, the table attribute must be always
 
 <h2 id="incremental-aggregation">Incremental Aggregation<a class="headerlink" href="#incremental-aggregation" title="Permanent link">&para;</a></h2>
 <p>Incremental aggregation allows you to obtain aggregates in an incremental manner for a specified set of time periods.</p>
-<p>This not only allows you calculate aggregations with varied time granularity, but also allows you access them in an interactive
+<p>This not only allows you to calculate aggregations with varied time granularity, but also allows you to access them in an interactive
  manner for reports, dashboards, and for further processing. Its schema is defined via the <strong>aggregation definition</strong>.</p>
 <p><strong>Purpose</strong></p>
 <p>Incremental aggregation allows you to retrieve the aggregate value for different time durations. 
-That is, it allows you to obtain aggregates such as <code>sum</code>, <code>count</code>, <code>avg</code>, <code>min</code>, <code>max</code>, and <code>count</code>) 
-of stream attributes for durations such as <code>sec</code>, <code>min</code>, <code>hour</code>, etc. </p>
+That is, it allows you to obtain aggregates such as <code>sum</code>, <code>count</code>, <code>avg</code>, <code>min</code>, <code>max</code>, and <code>count</code>
+of stream attributes for durations such as <code>sec</code>, <code>min</code>, <code>hour</code>, etc.</p>
 <p>This is of considerable importance in many Analytics scenarios because aggregate values are often needed for several time periods. 
 Furthermore, this ensures that the aggregations are not lost due to unexpected system failures because aggregates can be stored in different persistence <code>stores</code>.</p>
 <p><strong>Syntax</strong></p>
-<div class="codehilite"><pre><span></span><span class="o">@</span><span class="n">store</span><span class="p">(</span><span class="k">type</span><span class="o">=</span><span class="ss">&quot;&lt;store type&gt;&quot;</span><span class="p">,</span> <span class="p">...)</span>
+<div class="codehilite"><pre><span></span><span class="o">@</span><span class="n">BufferSize</span><span class="p">(</span><span class="ss">&quot;&lt;positive integer&gt;&quot;</span><span class="p">)</span>
+<span class="o">@</span><span class="n">IgnoreEventsOlderThanBuffer</span><span class="p">(</span><span class="ss">&quot;&lt;true or false&gt;&quot;</span><span class="p">)</span>
+<span class="o">@</span><span class="n">store</span><span class="p">(</span><span class="k">type</span><span class="o">=</span><span class="ss">&quot;&lt;store type&gt;&quot;</span><span class="p">,</span> <span class="p">...)</span>
 <span class="n">define</span> <span class="n">aggregation</span> <span class="o">&lt;</span><span class="n">aggregator</span> <span class="n">name</span><span class="o">&gt;</span>
 <span class="k">from</span> <span class="o">&lt;</span><span class="k">input</span> <span class="n">stream</span><span class="o">&gt;</span>
 <span class="k">select</span> <span class="o">&lt;</span><span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="k">aggregate</span> <span class="k">function</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">as</span> <span class="o">&lt;</span><span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...</span>
@@ -2813,6 +2852,14 @@ Furthermore, this ensures that the aggregations are not lost due to unexpected s
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>@BufferSize</code></td>
+<td>This annotation is optional. The default value is buffer size 0. <br/>It is used to identify the number of 'expired' events to retain <br/>in a buffer, to handle out of order event processing. It's an optional parameter <br/>which is applicable, only if aggregation is based on external timestamp (since events <br/>aggregated based on event arrival time cannot be out of order). An event is identified <br/>as 'expired' with relation to the latest event's timestamp and the most granular duration <br/>for which aggregation is calculated. For example, if aggregation is for sec...year, the <br/>most granular duration is seconds. Hence, if buffer size is 3 and events for 51st second, <br/>52nd second, 53rd second and 54th second arrive, all of the older aggregations (for <br/>seconds 51, 52 and 53) would be kept in the buffer (since latest event is for 54th second)</td>
+</tr>
+<tr>
+<td><code>@IgnoreEventsOlderThanBuffer</code></td>
+<td>This annotation specifies whether or not to aggregate events older than the <br/>buffer. If this value is false (which is the default value as well), an event <br/>older than the buffer would be aggregated with the oldest event in buffer. If <br/>the value is true, an event older than the buffer would be dropped. This is an optional annotation.</td>
+</tr>
 <tr>
 <td><code>@store</code></td>
 <td>This annotation is used to refer to the data store where the calculated <br/>aggregate results are stored. This annotation is optional. When <br/>no annotation is provided, the data is stored in the <code>in-memory</code> store.</td>
@@ -2835,7 +2882,7 @@ Furthermore, this ensures that the aggregations are not lost due to unexpected s
 </tr>
 <tr>
 <td><code>&lt;time periods&gt;</code></td>
-<td>When the aggregation period is given as <code>every sec, hour, month</code>, the aggregate values are calculated per second, per hour as well as per year.</td>
+<td>The time periods can be given as a range separated by three dots, or as comma separated values. A range would be given as sec...year, where aggregation would be done per second, minute, hour, day, month and year. Comma separated values can be given as min, hour. However, skipping durations is not yet supported for comma separated values (e.g min, day is not a valid clause since hour duration has been skipped)</td>
 </tr>
 </tbody>
 </table>
@@ -2868,7 +2915,7 @@ Furthermore, this ensures that the aggregations are not lost due to unexpected s
 </pre></div>
 
 
-<p>Apart from constructs of <a href="#join-table">table</a> this includes the following :</p>
+<p>Apart from constructs of <a href="#join-table">table join</a> this includes the following. Please note that the 'on' condition is optional :</p>
 <table>
 <thead>
 <tr>
@@ -2889,7 +2936,7 @@ Furthermore, this ensures that the aggregations are not lost due to unexpected s
 </table>
 <p><code>within</code> and <code>par</code> clauses also accept attribute values from the stream.</p>
 <p><strong>Example</strong></p>
-<p>This query retrieves all aggregation per day within the time range <code>"2014-02-15 00:00:00 +05:30", "2014-03-16 00:00:00 +05:30"</code>.</p>
+<p>This query retrieves all aggregation per day within the time range <code>"2014-02-15 00:00:00 +05:30", "2014-03-16 00:00:00 +05:30"</code> (Please note that +05:30 can be omitted if timezone is GMT)</p>
 <div class="codehilite"><pre><span></span><span class="n">define</span> <span class="n">stream</span> <span class="n">StockStream</span> <span class="p">(</span><span class="n">symbol</span> <span class="n">string</span><span class="p">,</span> <span class="n">value</span> <span class="nb">int</span><span class="p">);</span>
 
 <span class="k">from</span> <span class="n">StockStream</span> <span class="k">as</span> <span class="n">S</span> <span class="k">join</span> <span class="n">TradeAggregation</span> <span class="k">as</span> <span class="n">T</span>
@@ -2913,12 +2960,12 @@ Furthermore, this ensures that the aggregations are not lost due to unexpected s
 </pre></div>
 
 
-<p>This query retrieves all aggregation per value for an attribute of the stream  within the time period between timestamps <code>1490918400</code> and <code>1490922000</code>  </p>
+<p>This query retrieves all aggregation per value for an attribute of the stream  within the time period between timestamps <code>1496200000000</code> and <code>1596434876000</code></p>
 <div class="codehilite"><pre><span></span><span class="n">define</span> <span class="n">stream</span> <span class="n">StockStream</span> <span class="p">(</span><span class="n">symbol</span> <span class="n">string</span><span class="p">,</span> <span class="n">value</span> <span class="nb">int</span><span class="p">,</span> <span class="n">perValue</span> <span class="n">string</span><span class="p">);</span>
 
 <span class="k">from</span> <span class="n">StockStream</span> <span class="k">as</span> <span class="n">S</span> <span class="k">join</span> <span class="n">TradeAggregation</span> <span class="k">as</span> <span class="n">T</span>
   <span class="k">on</span> <span class="n">S</span><span class="p">.</span><span class="n">symbol</span> <span class="o">==</span> <span class="n">T</span><span class="p">.</span><span class="n">symbol</span> 
-  <span class="n">within</span> <span class="mi">1490918400</span><span class="p">,</span> <span class="mi">1490922000</span>  
+  <span class="n">within</span> <span class="mi">1496200000000</span><span class="n">L</span><span class="p">,</span> <span class="mi">1596434876000</span><span class="n">L</span>
   <span class="n">per</span> <span class="n">S</span><span class="p">.</span><span class="n">perValue</span>
 <span class="k">select</span> <span class="n">S</span><span class="p">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">total</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">avgPrice</span> 
 <span class="k">insert</span> <span class="k">into</span> <span class="n">AggregateStockStream</span><span class="p">;</span>
