@@ -676,6 +676,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../api/4.1.5/" title="4.1.5" class="md-nav__link">
+      4.1.5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../api/4.1.4/" title="4.1.4" class="md-nav__link">
       4.1.4
     </a>
@@ -1397,6 +1409,7 @@ depends on the source type selected, some of the the parameters are optional. </
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-file/">File</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-rabbitmq/">RabbitMQ</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-mqtt/">MQTT</a></li>
+<li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-websocket/">WebSocket</a></li>
 </ul>
 <p><strong>Source Mapper</strong></p>
 <p>Each <code>@source</code> configuration has a mapping denoted by the <code>@map</code> annotation that converts the incoming messages format to Siddhi events.</p>
@@ -1427,6 +1440,7 @@ can configure mappers to extract data from the incoming message selectively, and
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-map-json/">JSON</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-map-binary/">Binary</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-map-keyvalue/">Key Value</a></li>
+<li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-map-csv/">CSV</a></li>
 </ul>
 <p><strong>Example</strong></p>
 <p>This query receives events via the <code>HTTP</code> source in the <code>JSON</code> data format, and directs them to the <code>InputStream</code> stream for processing. 
@@ -1486,6 +1500,7 @@ depends on the sink type selected. Some of these parameters are optional, and so
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-file/">File</a> </li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-rabbitmq/">RabbitMQ</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-mqtt/">MQTT</a></li>
+<li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-websocket/">WebSocket</a></li>
 </ul>
 <p><strong>Sink Mapper</strong></p>
 <p>Each <code>@sink</code> annotation has a mapping denoted by the  <code>@map</code> annotation that converts the Siddhi event to an outgoing message format.</p>
@@ -1515,6 +1530,7 @@ the attributes in your preferred format. </p>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-map-json/">JSON</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-map-binary/">Binary</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-map-keyvalue/">Key Value</a></li>
+<li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-map-csv/">CSV</a></li>
 </ul>
 <p><strong>Example</strong></p>
 <p>This query publishes events from the <code>OutputStream</code> stream via the <code>HTTP</code> sink. Here the events are mapped to the default <code>JSON</code> payloads and sent to <code>http://localhost:8005/endpoint</code>
