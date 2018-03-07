@@ -703,6 +703,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../api/4.1.12/" title="4.1.12" class="md-nav__link">
+      4.1.12
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../api/4.1.11/" title="4.1.11" class="md-nav__link">
       4.1.11
     </a>
@@ -2999,18 +3011,21 @@ else insert the entry as a new attribute.</p>
 <p>The <code>condition</code> element specifies the basis on which events are selected for update.
 When specifying the <code>condition</code>, table attributes should be referred to with the table name. 
 If a record that matches the condition does not already exist in the table, the arriving event is inserted into the table.</p>
-<p>The <code>set</code> clause is only used when the update operation is performed and it is used during the insert operation. 
-When <code>set</code> clause is used the left hand side attribute should be always a table attribute and 
-the right hand side attribute can be stream/table attribute, mathematical 
- operations or other. When <code>set</code> clause is not provided all attributes in the table will be updated.  </p>
+<p>The <code>set</code> clause is only used when an update is performed during the insert/update operation. 
+When <code>set</code> clause is used, the attribute to the left is always a table attribute, and the attribute to the right can be a stream/table attribute, mathematical 
+operation or other. The attribute to the left (i.e., the attribute in the event table) is updated with the value of the attribute to the right if the given condition is met. When the <code>set</code> clause is not provided, all the attributes in the table are updated. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When the attribute to the right is a table attribute, the operations supported differ based on the database type.</p>
+</div>
 <p>To execute update upon specific output event types use the <code>current events</code>, <code>expired events</code> or the <code>all events</code> keyword with <code>for</code> as shown
-in the syntax. To understand more refer <a href="http://127.0.0.1:8000/documentation/siddhi-4.0/#output-event-types">output event type</a> section.</p>
+in the syntax. To understand more see <a href="http://127.0.0.1:8000/documentation/siddhi-4.0/#output-event-types">output event type</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Table attributes should be always referred to with the table name as <code>&lt;table name&gt;.&lt;attibute name&gt;</code>.</p>
 </div>
 <p><strong>Example</strong></p>
-<p>The following query update for events in the <code>UpdateTable</code> event table that have room numbers that match the same in the <code>UpdateStream</code> stream. When such events are founding the event table, they are updated. When a room number available in the stream is not found in the event table, it is inserted from the stream.</p>
+<p>The following query update for events in the <code>UpdateTable</code> event table that have room numbers that match the same in the <code>UpdateStream</code> stream. When such events are found in the event table, they are updated. When a room number available in the stream is not found in the event table, it is inserted from the stream.</p>
 <div class="codehilite"><pre><span></span><span class="n">define</span> <span class="k">table</span> <span class="n">RoomAssigneeTable</span> <span class="p">(</span><span class="n">roomNo</span> <span class="nb">int</span><span class="p">,</span> <span class="k">type</span> <span class="n">string</span><span class="p">,</span> <span class="n">assignee</span> <span class="n">string</span><span class="p">);</span>
 <span class="n">define</span> <span class="n">stream</span> <span class="n">RoomAssigneeStream</span> <span class="p">(</span><span class="n">roomNumber</span> <span class="nb">int</span><span class="p">,</span> <span class="k">type</span> <span class="n">string</span><span class="p">,</span> <span class="n">assignee</span> <span class="n">string</span><span class="p">);</span>
 
@@ -3480,7 +3495,8 @@ different type of functionality, and for some cases there can be gaps and you ne
 </tr>
 </tbody>
 </table>
-<p><strong>Extension types</strong></p>
+<p><a name="ExtensionTypes"></a>
+<strong>Extension Types</strong></p>
 <p>Siddhi supports following extension types:</p>
 <ul>
 <li>
@@ -3588,15 +3604,15 @@ different type of functionality, and for some cases there can be gaps and you ne
 <p>Siddhi currently has several pre written extensions that are available <a target="_blank" href="https://wso2.github.io/siddhi/extensions/">here</a></p>
 <p><em>We value your contribution on improving Siddhi and its extensions further.</em></p>
 <h3 id="writing-custom-extensions">Writing Custom Extensions<a class="headerlink" href="#writing-custom-extensions" title="Permanent link">&para;</a></h3>
-<p>Custom extensions can be written in order to cater use case specific logic that are not available in Siddhi out of the box or as an existing extension. </p>
-<p>There are five types of Siddhi extensions that you can write to cater your specific use cases. Please find each 
-extension types and related maven archetypes below. You can use these archetypes to generate maven projects for each 
+<p>Custom extensions can be written in order to cater use case specific logic that are not available in Siddhi out of the box or as an existing extension.</p>
+<p>There are five types of Siddhi extensions that you can write to cater your specific use cases. These 
+extension types and the related maven archetypes are given below. You can use these archetypes to generate Maven projects for each 
 extension type.</p>
 <ul>
-<li>Follow one of the step below, based on your project :</li>
+<li>Follow the procedure for the required archetype, based on your project:</li>
 </ul>
 <p><strong>siddhi-execution</strong></p>
-<p>Siddhi-execution provides following extension types,</p>
+<p>Siddhi-execution provides following extension types:</p>
 <ul>
 <li>Function</li>
 <li>Aggregate Function</li>
@@ -3604,10 +3620,12 @@ extension type.</p>
 <li>Stream Processor</li>
 <li>Window</li>
 </ul>
-<p>You can use one or more from above mentioned extension types and implement according to your requirement. You can find more information about these extension types under the heading 'Extension types' in this document. </p>
-<ul>
+<p>You can use one or more from above mentioned extension types and implement according to your requirement. </p>
+<p>For more information about these extension types, see <a href="#ExtensionTypes">Extension Types</a>.</p>
+<p>To install and implement the siddhi-io extension archetype, follow the procedure below:</p>
+<ol>
 <li>
-<p>Run the following command</p>
+<p>Issue the following command from your CLI.</p>
 <div class="codehilite"><pre><span></span>        mvn archetype:generate
             -DarchetypeGroupId=org.wso2.siddhi.extension.archetype
             -DarchetypeArtifactId=siddhi-archetype-execution
@@ -3618,26 +3636,30 @@ extension type.</p>
 
 </li>
 <li>
-<p>Then the system will pop-up the following message to enter the execution name</p>
-<div class="codehilite"><pre><span></span>    eg:- Define value for property &#39;executionType&#39;: ML
+<p>Enter the required execution name in the message that pops up as shown in the example below.</p>
+<div class="codehilite"><pre><span></span>    Define value for property &#39;executionType&#39;: ML
 </pre></div>
 
 
 </li>
 <li>
-<p>Finally confirm all property values are correct or not by typing Y or press Enter, else type N</p>
+<p>To confirm that all property values are correct, type <code>Y</code> in the console. If not, press <code>N</code>.</p>
 </li>
-</ul>
+</ol>
 <p><strong>siddhi-io</strong></p>
-<p>Siddhi-io provides following extension types,</p>
+<p>Siddhi-io provides following extension types:</p>
 <ul>
 <li>Sink</li>
 <li>Source</li>
 </ul>
-<p>You can use one or more from above mentioned extension types and implement according to your requirement. siddhi-io generaly uses to work with IO operations. If you want get inputs to your Siddhi app, you can use 'Source' extension type. If you want to get outputs from your Siddhi app, you can use 'Sink' extension and implement it. You can find more information about these extension types under the heading 'Extension types' in this document. </p>
-<ul>
+<p>You can use one or more from above mentioned extension types and implement according to your requirement. siddhi-io is generally used to work with IO operations as follows:
+ * The Source extension type gets inputs to your Siddhi application.
+ * The Sink extension publishes outputs from your Siddhi application. </p>
+<p>For more information about these extension types, see <a href="#ExtensionTypes">Extension Types</a>.</p>
+<p>To implement the siddhi-io extension archetype, follow the procedure below:</p>
+<ol>
 <li>
-<p>Run the following command</p>
+<p>Issue the following command from your CLI.</p>
 <div class="codehilite"><pre><span></span>       mvn archetype:generate
            -DarchetypeGroupId=org.wso2.siddhi.extension.archetype
            -DarchetypeArtifactId=siddhi-archetype-io
@@ -3648,26 +3670,32 @@ extension type.</p>
 
 </li>
 <li>
-<p>Then the system will pop-up the following message to enter the typeOf_IO</p>
-<div class="codehilite"><pre><span></span> eg:- Define value for property &#39;typeOf_IO&#39;: http
+<p>Enter the required execution name (the transport type in this scenario) in the message that pops up as shown in the example below.</p>
+<div class="codehilite"><pre><span></span> Define value for property &#39;typeOf_IO&#39;: http
 </pre></div>
 
 
 </li>
 <li>
-<p>Finally confirm all property values are correct or not by typing Y or press Enter, else type N</p>
+<p>To confirm that all property values are correct, type <code>Y</code> in the console. If not, press <code>N</code>.</p>
 </li>
-</ul>
+</ol>
 <p><strong>siddhi-map</strong></p>
 <p>Siddhi-map provides following extension types,</p>
 <ul>
 <li>Sink Mapper</li>
 <li>Source Mapper</li>
 </ul>
-<p>You can use one or more from above mentioned extension types and implement according to your requirement. Source Mapper is used to map events to a predefined data format (such as XML, JSON, binary, etc), and publishes them to external endpoints (such as E-mail, TCP, Kafka, HTTP, etc). Sink Mapper is used for same usecase, but in the time of publishing events from Siddhi app.You can find more information about these extension types under the heading 'Extension types' in this document. </p>
+<p>You can use one or more from above mentioned extension types and implement according to your requirement as follows.</p>
 <ul>
+<li>The Source Mapper maps events to a predefined data format (such as XML, JSON, binary, etc), and publishes them to external endpoints (such as E-mail, TCP, Kafka, HTTP, etc).</li>
+<li>The Sink Mapper also maps events to a predefined data format, but it does it at the time of publishing events from a Siddhi application.</li>
+</ul>
+<p>For more information about these extension types, see <a href="#ExtensionTypes">Extension Types</a>.</p>
+<p>To implement the siddhi-map extension archetype, follow the procedure below:</p>
+<ol>
 <li>
-<p>Run the following command</p>
+<p>Issue the following command from your CLI.                </p>
 <div class="codehilite"><pre><span></span>        mvn archetype:generate
             -DarchetypeGroupId=org.wso2.siddhi.extension.archetype
             -DarchetypeArtifactId=siddhi-archetype-map
@@ -3678,25 +3706,24 @@ extension type.</p>
 
 </li>
 <li>
-<p>Then the system will pop-up the following message to enter the mapType</p>
-<div class="codehilite"><pre><span></span>    eg:- Define value for property &#39;mapType&#39;:CSV
+<p>Enter the required execution name (the map type in this scenario) in the message that pops up as shown in the example below.</p>
+<div class="codehilite"><pre><span></span>    Define value for property &#39;mapType&#39;:CSV
 </pre></div>
 
 
 </li>
 <li>
-<p>Finally confirm all property values are correct or not by typing Y or press Enter, else type N</p>
+<p>To confirm that all property values are correct, type <code>Y</code> in the console. If not, press <code>N</code>.</p>
 </li>
-</ul>
+</ol>
 <p><strong>siddhi-script</strong></p>
-<p>Siddhi-script provides following extension types,</p>
-<ul>
-<li>Script</li>
-</ul>
-<p>You can use script extension type to write functions in other programming languages and execute them within Siddhi queries. Functions defined via scripts can be accessed in queries similar to any other inbuilt function. You can find more information about these extension types under the heading 'Extension types' in this document. </p>
-<ul>
+<p>Siddhi-script provides the <code>Script</code> extension type.</p>
+<p>The script extension type allows you to write functions in other programming languages and execute them within Siddhi queries. Functions defined via scripts can be accessed in queries similar to any other inbuilt function. </p>
+<p>For more information about these extension types, see <a href="#ExtensionTypes">Extension Types</a>.</p>
+<p>To implement the siddhi-script extension archetype, follow the procedure below:</p>
+<ol>
 <li>
-<p>Run the following command</p>
+<p>Issue the following command from your CLI.                   </p>
 <div class="codehilite"><pre><span></span>       mvn archetype:generate
            -DarchetypeGroupId=org.wso2.siddhi.extension.archetype
            -DarchetypeArtifactId=siddhi-archetype-script
@@ -3707,25 +3734,24 @@ extension type.</p>
 
 </li>
 <li>
-<p>Then the system will pop-up the following message to enter the script type</p>
-<div class="codehilite"><pre><span></span> eg:- Define value for property &#39;typeOfScript&#39;:
+<p>Enter the required execution name in the message that pops up as shown in the example below.</p>
+<div class="codehilite"><pre><span></span> Define value for property &#39;typeOfScript&#39;:
 </pre></div>
 
 
 </li>
 <li>
-<p>Finally confirm all property values are correct or not by typing Y or press Enter, else type N</p>
+<p>To confirm that all property values are correct, type <code>Y</code> in the console. If not, press <code>N</code>.</p>
 </li>
-</ul>
+</ol>
 <p><strong>siddhi-store</strong></p>
-<p>Siddhi-store provides following extension types,</p>
-<ul>
-<li>Store</li>
-</ul>
-<p>You can use Store extension type to work with data/events stored in various data stores through the table abstraction. You can find more information about these extension types under the heading 'Extension types' in this document. </p>
-<ul>
+<p>Siddhi-store provides the <code>Store</code> extension type.</p>
+<p>The Store extension type allows you to work with data/events stored in various data stores through the table abstraction. </p>
+<p>For more information about these extension types, see <a href="#ExtensionTypes">Extension Types</a>.</p>
+<p>To implement the siddhi-store extension archetype, follow the procedure below:</p>
+<ol>
 <li>
-<p>Run the following command</p>
+<p>Issue the following command from your CLI.                      </p>
 <div class="codehilite"><pre><span></span>       mvn archetype:generate
           -DarchetypeGroupId=org.wso2.siddhi.extension.archetype
           -DarchetypeArtifactId=siddhi-archetype-store
@@ -3736,16 +3762,16 @@ extension type.</p>
 
 </li>
 <li>
-<p>Then the system will pop-up the following message to enter the store type</p>
-<div class="codehilite"><pre><span></span>  eg:- Define value for property &#39;storeType&#39;: RDBMS
+<p>Enter the required execution name in the message that pops up as shown in the example below.</p>
+<div class="codehilite"><pre><span></span>  Define value for property &#39;storeType&#39;: RDBMS
 </pre></div>
 
 
 </li>
 <li>
-<p>Finally confirm all property values are correct or not by typing Y or press Enter, else type N.</p>
+<p>To confirm that all property values are correct, type <code>Y</code> in the console. If not, press <code>N</code>.</p>
 </li>
-</ul>
+</ol>
 <h2 id="configuring-and-monitoring-siddhi-applications">Configuring and Monitoring Siddhi Applications<a class="headerlink" href="#configuring-and-monitoring-siddhi-applications" title="Permanent link">&para;</a></h2>
 <p>This section explains how to use the <code>@app</code> annotation to generate statistics for Siddhi applications as well as improve the performance of Siddhi applications.</p>
 <h3 id="appstatistics">@app:statistics<a class="headerlink" href="#appstatistics" title="Permanent link">&para;</a></h3>
