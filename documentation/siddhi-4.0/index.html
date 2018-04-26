@@ -717,6 +717,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../api/4.1.19/" title="4.1.19" class="md-nav__link">
+      4.1.19
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../api/4.1.18/" title="4.1.18" class="md-nav__link">
       4.1.18
     </a>
@@ -1442,7 +1454,7 @@ depends on the source type selected, some of the the parameters are optional. </
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-http/">HTTP</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-kafka/">Kafka</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-tcp/">TCP</a></li>
-<li>In-memory</li>
+<li><a target="_blank" href="https://wso2.github.io/siddhi/api/latest/#inmemory-source">In-memory</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-wso2event/">WSO2Event</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-email/">Email</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-jms/">JMS</a></li>
@@ -1533,7 +1545,7 @@ depends on the sink type selected. Some of these parameters are optional, and so
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-http/">HTTP</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-kafka/">Kafka</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-tcp/">TCP</a></li>
-<li>In-memory</li>
+<li><a target="_blank" href="https://wso2.github.io/siddhi/api/latest/#inmemory-sink">In-memory</a>     </li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-wso2event/">WSO2Event</a></li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-email/">Email</a> </li>
 <li><a target="_blank" href="https://wso2-extensions.github.io/siddhi-io-jms/">JMS</a> </li>
@@ -1874,22 +1886,22 @@ Following are the supported unit types. Upon execution, time returns the value i
 </div>
 <p>Following are some inbuilt functions shipped with Siddhi, for more functions refer execution <a target="_blank" href="https://wso2.github.io/siddhi/extensions/">extensions</a>.</p>
 <ul>
-<li>eventTimestamp</li>
-<li>log</li>
-<li>UUID</li>
-<li>default</li>
-<li>cast</li>
-<li>convert</li>
-<li>ifThenElse</li>
-<li>minimum</li>
-<li>maximum</li>
-<li>coalesce</li>
-<li>instanceOfBoolean</li>
-<li>instanceOfDouble</li>
-<li>instanceOfFloat</li>
-<li>instanceOfInteger</li>
-<li>instanceOfLong</li>
-<li>instanceOfString</li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#eventtimestamp-function">eventTimestamp</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#log-stream-processor">log</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#uuid-function">UUID</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#default-function">default</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#cast-function">cast</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#convert-function">convert</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#ifthenelse-function">ifThenElse</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#minimum-function">minimum</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#maximum-function">maximum</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#coalesce-function">coalesce</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#instanceofboolean-function">instanceOfBoolean</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#instanceofdouble-function">instanceOfDouble</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#instanceoffloat-function">instanceOfFloat</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#instanceofinteger-function">instanceOfInteger</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#instanceoflong-function">instanceOfLong</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#instanceofstring-function">instanceOfString</a></li>
 </ul>
 <p><strong>Example</strong></p>
 <p>The following configuration converts the <code>roomNo</code> to <code>string</code> and adds a <code>messageID</code> to each event using the <code>convert</code> and <code>UUID</code> functions.</p>
@@ -2010,17 +2022,17 @@ Code segments such as <code>#window.time(10 min)</code> considers events that ar
 </div>
 <p>Following are some inbuilt windows shipped with Siddhi. For more window types, see execution <a target="_blank" href="https://wso2.github.io/siddhi/extensions/">extensions</a>. </p>
 <ul>
-<li>time</li>
-<li>timeBatch</li>
-<li>timeLength</li>
-<li>length</li>
-<li>lengthBatch</li>
-<li>sort</li>
-<li>frequent</li>
-<li>lossyFrequent</li>
-<li>cron</li>
-<li>externalTime</li>
-<li>externalTimeBatch</li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#time-window">time</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#timebatch-window">timeBatch</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#timelength-window">timeLength</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#length-window">length</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#lengthbatch-window">lengthBatch</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#sort-window">sort</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#frequent-window">frequent</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#lossyfrequent-window">lossyFrequent</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#cron-window">cron</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#externaltime-window">externalTime</a></li>
+<li><a href="https://wso2.github.io/siddhi/api/latest/#externaltimebatch-window">externalTimeBatch</a></li>
 </ul>
 <p><strong>Output event types</strong><a id="output-event-types" class='anchor' aria-hidden='true'></a> </p>
 <p>Projection of the query depends on the output event types such as, <code>current</code> and <code>expired</code> event types.
@@ -3203,14 +3215,12 @@ Events can be inserted to a defined window from one or more queries and it can p
 <li>
 <p>Returning all output when events arrive and when events expire from the window.</p>
 <p>In this query, the output event type is not specified. Therefore, it returns both current and expired events as the output.</p>
-<p><pre>
-define window SensorWindow (name string, value float, roomNo int, deviceID string) timeBatch(1 second); </pre></p>
-</li>
-<li>
-<p>Returning an output only when events expire from the window.</p>
+<p><code>sql
+define window SensorWindow (name string, value float, roomNo int, deviceID string) timeBatch(1 second);</code>
++ Returning an output only when events expire from the window.</p>
 <p>In this query, the output event type of the window is <code>expired events</code>. Therefore, it only returns the events that have expired from the window as the output.</p>
-<p><pre>
-define window SensorWindow (name string, value float, roomNo int, deviceID string) timeBatch(1 second) output expired events; </pre></p>
+<p><code>sql
+define window SensorWindow (name string, value float, roomNo int, deviceID string) timeBatch(1 second) output expired events;</code></p>
 </li>
 </ul>
 <p><strong>Operators on Defined Windows</strong></p>
