@@ -717,6 +717,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../api/4.1.23/" title="4.1.23" class="md-nav__link">
+      4.1.23
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../api/4.1.22/" title="4.1.22" class="md-nav__link">
       4.1.22
     </a>
@@ -3252,14 +3264,22 @@ Events can be inserted to a defined window from one or more queries and it can p
 <li>
 <p>Returning all output when events arrive and when events expire from the window.</p>
 <p>In this query, the output event type is not specified. Therefore, it returns both current and expired events as the output.</p>
-<p><code>sql
-define window SensorWindow (name string, value float, roomNo int, deviceID string) timeBatch(1 second);</code>
-+ Returning an output only when events expire from the window.</p>
-<p>In this query, the output event type of the window is <code>expired events</code>. Therefore, it only returns the events that have expired from the window as the output.</p>
-<p><code>sql
-define window SensorWindow (name string, value float, roomNo int, deviceID string) timeBatch(1 second) output expired events;</code></p>
 </li>
 </ul>
+<div class="codehilite"><pre><span></span>  <span class="n">define</span> <span class="n">window</span> <span class="n">SensorWindow</span> <span class="p">(</span><span class="n">name</span> <span class="n">string</span><span class="p">,</span> <span class="n">value</span> <span class="nb">float</span><span class="p">,</span> <span class="n">roomNo</span> <span class="nb">int</span><span class="p">,</span> <span class="n">deviceID</span> <span class="n">string</span><span class="p">)</span> <span class="n">timeBatch</span><span class="p">(</span><span class="mi">1</span> <span class="k">second</span><span class="p">);</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>Returning an output only when events expire from the window.</p>
+<p>In this query, the output event type of the window is <code>expired events</code>. Therefore, it only returns the events that have expired from the window as the output.</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span>  <span class="n">define</span> <span class="n">window</span> <span class="n">SensorWindow</span> <span class="p">(</span><span class="n">name</span> <span class="n">string</span><span class="p">,</span> <span class="n">value</span> <span class="nb">float</span><span class="p">,</span> <span class="n">roomNo</span> <span class="nb">int</span><span class="p">,</span> <span class="n">deviceID</span> <span class="n">string</span><span class="p">)</span> <span class="n">timeBatch</span><span class="p">(</span><span class="mi">1</span> <span class="k">second</span><span class="p">)</span> <span class="k">output</span> <span class="n">expired</span> <span class="n">events</span><span class="p">;</span>
+</pre></div>
+
+
 <p><strong>Operators on Defined Windows</strong></p>
 <p>The following operators can be performed on defined windows.</p>
 <h3 id="insert_1">Insert<a class="headerlink" href="#insert_1" title="Permanent link">&para;</a></h3>
