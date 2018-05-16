@@ -743,6 +743,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../api/4.1.25/" title="4.1.25" class="md-nav__link">
+      4.1.25
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../api/4.1.24/" title="4.1.24" class="md-nav__link">
       4.1.24
     </a>
@@ -3063,9 +3075,9 @@ in the syntax. For more information, see <a href="#output-event-types">output ev
 
 <span class="k">from</span> <span class="n">UpdateStream</span>
 <span class="k">select</span> <span class="o">*</span>
-<span class="k">update</span> <span class="n">RoomTypeTable</span>
-    <span class="k">set</span> <span class="n">RoomTypeTable</span><span class="p">.</span><span class="n">people</span> <span class="o">=</span> <span class="n">RoomTypeTable</span><span class="p">.</span><span class="n">people</span> <span class="o">+</span> <span class="n">arrival</span> <span class="o">-</span> <span class="n">exit</span>
-    <span class="k">on</span> <span class="n">RoomTypeTable</span><span class="p">.</span><span class="n">roomNo</span> <span class="o">==</span> <span class="n">roomNumber</span><span class="p">;</span>
+<span class="k">update</span> <span class="n">RoomOccupancyTable</span>
+    <span class="k">set</span> <span class="n">RoomOccupancyTable</span><span class="p">.</span><span class="n">people</span> <span class="o">=</span> <span class="n">RoomOccupancyTable</span><span class="p">.</span><span class="n">people</span> <span class="o">+</span> <span class="n">arrival</span> <span class="o">-</span> <span class="n">exit</span>
+    <span class="k">on</span> <span class="n">RoomOccupancyTable</span><span class="p">.</span><span class="n">roomNo</span> <span class="o">==</span> <span class="n">roomNumber</span><span class="p">;</span>
 </pre></div>
 
 
